@@ -120,7 +120,7 @@
 							<div class="card">
 								<div class="card-body">
 				
-									<form action={{ url('update/edit') }} method="post" enctype="multipart/form-data" autocomplete="off">
+									<form action={{ route('estste.edit',$es->id) }} method="post" enctype="multipart/form-data" autocomplete="off">
 										@csrf
 				
 										<div class="row">

@@ -99,8 +99,11 @@
 			<span></span>
 			
 		    <a href="{{route('estate.create')}}" class="right-btn" style="float: right;  border-radius: 3px; padding:10px; background-color:#30caa0; color:white">Add new</a>
-			{{-- <a href="" class="right-btn" style="float: right; margin-right:5px;border-radius: 3px; padding:10px; background-color:#30caa0; color:white">Delete All</a> --}}
-			<button type="submit" class="right-btn" style="float: right; margin-right:5px;border-radius: 3px; padding:10px; background-color:#30caa0; color:white">Delete All</button>
+			@method('Delete')
+			@csrf
+			<form action="{{ route('estate.deleteAll') }}" method="POST">
+			<button type="submit" class="right-btn" style="float: right; margin-right:5px;border-radius: 3px; padding:10px; background-color:#30caa0; color:white"> estate</button>
+			</form>
 		</div>
 	</div>
 	
