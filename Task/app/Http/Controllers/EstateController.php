@@ -17,6 +17,7 @@ use Illuminate\Support\Str;
 class EstateController extends Controller
 {
     /**
+     
      * Display a listing of the resource.
      */
 
@@ -154,7 +155,7 @@ class EstateController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit( $id)
     {
        $es = Estate::findOrFail($id);
        return view('estate.edit',compact('es'));
@@ -163,7 +164,7 @@ class EstateController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request,  $id)
     {
        $es = Estate::finndOrFail($id);
        $es->update([
@@ -192,9 +193,14 @@ class EstateController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy( $id)
     {
         $es = Estate::findOrFail($id)->delete();
+    }
+    public function deleteAll()
+    {
+        $es = Estate::deleteAll();
+        return redirect()->route('estate');
     }
    
 }
