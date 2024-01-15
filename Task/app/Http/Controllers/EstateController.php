@@ -155,7 +155,7 @@ class EstateController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit( $id)
+    public function edit($id)
     {
        $es = Estate::findOrFail($id);
        return view('estate.edit',compact('es'));
@@ -195,11 +195,11 @@ class EstateController extends Controller
      */
     public function destroy( $id)
     {
-        $es = Estate::findOrFail($id)->delete();
+        Estate::findOrFail($id)->delete();
     }
     public function deleteAll()
     {
-        $es = Estate::deleteAll();
+         Estate::deleteAll();
         return redirect()->route('estate');
     }
    
