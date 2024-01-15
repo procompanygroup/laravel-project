@@ -47,7 +47,6 @@ class EstateController extends Controller
     //     $data= Estate::get('images');
     //    $img=json_decode( $data);
         $estate = Estate::all();
-       // $imgs = Estate::get('images');
      return view('components.index',compact('estate'));
     }
 
