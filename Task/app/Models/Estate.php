@@ -7,12 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Estate extends Model
 {
-    protected  $fillable =['image_name','image_url'];
+    protected  $fillable =['outlook','direction','floor','ownership',
+    'room_number','bath_number','price','place_for_barbecue',
+    'parking','left','TV_cable','internet','central_heating','slug','Address','description','Contact_phone','images'];
+    
+  
     use HasFactory;
-    public function Images()
-    {
-        return $this->hasMany(Image::class,'estate_id');
-
-    }
+    
   
 }

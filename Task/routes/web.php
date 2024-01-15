@@ -32,8 +32,13 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
-
-Route::resource('estate', EstateController::class);
+Route::get('estate', [ EstateController::class, 'index']);
+Route::get('estate/create', [ EstateController::class, 'create' ])->name('estate.create');
+Route::post('estate/store', [ EstateController::class, 'store' ])->name('estate.store');
+Route::get('estate/edit', [ EstateController::class, 'edit' ])->name('estate.edit');
+Route::post('estate/update', [ EstateController::class, 'update' ])->name('estate.update');
+//Route::resource('estate', EstateController::class);
 //For Image
-Route::get('image-upload', [ ImageUploadController::class, 'imageUpload' ])->name('image.upload');
-Route::post('image-upload', [ ImageUploadController::class, 'imageUploadPost' ])->name('image.upload.post');
+// Route::get('image-upload', [ ImageUploadController::class, 'imageUpload' ])->name('image.upload');
+// Route::post('image-upload', [ ImageUploadController::class, 'imageUploadPost' ])->name('image.upload.post');
+

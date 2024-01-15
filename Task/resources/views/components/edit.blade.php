@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 	<link href="{{asset('https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css')}}" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 	<title>LERAMIZ - Landing Page Template</title>
 	<meta charset="UTF-8">
 	<meta name="description" content="LERAMIZ Landing Page Template">
@@ -12,6 +13,7 @@
 
 	<!-- Google Fonts -->
 	<link href="{{asset('https://fonts.googleapis.com/css?family=Source+Sans+Pro')}}" rel="stylesheet">
+
 
 	<!-- Stylesheets -->
 	<link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}"/>
@@ -83,125 +85,188 @@
 
 
 	<!-- Page top section -->
-	<section class="page-top-section set-bg" data-setbg="{{asset('img/page-top-bg.jpg')}}">
+	<section class="page-top-section set-bg" data-setbg="img/page-top-bg.jpg">
 		<div class="container text-white">
 			<h2>Home</h2>
 		</div>
 	</section>
+
+	@section('page-header')
+				<!-- breadcrumb -->
+				<div class="breadcrumb-header justify-content-between">
+					<div class="my-auto">
+						<div class="d-flex">
+							<h4 class="content-title mb-0 my-auto"> for sale</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/ edit your partment</span>
+						</div>
+					</div>
+				</div>
+@endsection
 	<!--  Page top end -->
+	@section('content')
 
-
+	@if (session()->has('edit'))
+	<div class="alert alert-success alert-dismissible fade show" role="alert">
+		<strong>{{ session()->get('edit') }}</strong>
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	@endif
+	
+					<!-- row -->
+					<div class="row">
+	
+						<div class="col-lg-12 col-md-12">
+							<div class="card">
+								<div class="card-body">
+				
+									<form action={{ url('update/edit') }} method="post" enctype="multipart/form-data" autocomplete="off">
+										@csrf
+				
+										<div class="row">
+											<div class="col">
+												<label for="inputName" class="control-label">outlook</label>
+												<input type="text" class="form-control" id="inputName" name="outlook"
+													title="please enter your paretment's outlook" required>
+											</div>
+										</div><br>
+				
+										<div class="row">
+											<div class="col">
+												<label for="inputName" class="control-label">direction</label>
+												<input type="text" class="form-control" id="inputName" name="direction" required>
+											</div>
+										</div><br>
+	
+										
+										<div class="row">
+											<div class="col">
+												<label for="inputName" class="control-label">floor</label>
+												<input type="text" class="form-control" id="inputName" name="floor" required>
+											</div>
+										</div><br>
+	
+										
+										<div class="row">
+											<div class="col">
+												<label for="inputName" class="control-label">ownership</label>
+												<input type="text" class="form-control" id="inputName" name="ownership" required>
+											</div>
+										</div><br>
+	
+										
+										<div class="row">
+											<div class="col">
+												<label for="inputName" class="control-label">room number</label>
+												<input type="text" class="form-control" id="inputName" name="room_number" required>
+											</div>
+										</div><br>
+	
+										<div class="row">
+											<div class="col">
+												<label for="inputName" class="control-label">bath number</label>
+												<input type="text" class="form-control" id="inputName" name="bath_number" required>
+											</div>
+										</div><br>
+	
+										<div class="row">
+											<div class="col">
+												<label for="inputName" class="control-label">price</label>
+												<input type="text" class="form-control" id="inputName" name="price" required>
+											</div>
+										</div><br>
+	
+										<div class="form-check">
+											<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+											<label class="form-check-label" for="parking">
+												parking
+											</label>
+										  </div>
+	
+										  <div class="form-check">
+											<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+											<label class="form-check-label" for="place_for_barbecue">
+												place for barbecue
+											</label>
+										  </div>
+	
+										  <div class="form-check">
+											<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+											<label class="form-check-label" for="left">
+												left
+											</label>
+										  </div>
+	
+										  <div class="form-check">
+											<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+											<label class="form-check-label" for="TV_cable">
+												TV_cable
+											</label>
+										  </div>
+	
+										  <div class="form-check">
+											<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+											<label class="form-check-label" for="internet">
+												internet
+											</label>
+										  </div>
+										 
+										  
+										  <div class="form-check">
+											<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+											<label class="form-check-label" for=" central_heating">
+												central_heating
+											</label>
+										  </div>
+	
+										
+										<div class="row">
+											<div class="col">
+												<label for="inputName" class="control-label">slug</label>
+												<input type="text" class="form-control" id="inputName" name="slug" required>
+											</div>
+										</div><br>
+	
+										{{-- <div class="form-group">
+											<label>التصنيف الأب</label>
+											<select name="parent_id" class="form-control select">
+												
+												<option value="0">لا يوجد</option>
+	
+												@foreach($parents as $parent)
+												<option value="{{$parent->id}}">{{$parent->category_name}}</option>
+												@endforeach 
+	
+											</select>
+										</div> --}}
+				
+				
+										<div class="d-flex justify-content-center">
+											<button type="submit" class="btn btn-primary">Add</button>
+										</div>
+				
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- row closed -->
+	@endsection
 	<!-- Breadcrumb -->
 	<div class="site-breadcrumb">
 		<div class="container">
 			<a href=""><i class="fa fa-home"></i>Home</a>
 			<span><i class="fa fa-angle-right"></i>FOR SALE</span>
-			<span></span>
-			@foreach ($estate as $es)
-		    <a href="{{ route('estate.create') }}" class="right-btn" style="float: right;  border-radius: 3px; padding:10px; background-color:#30caa0; color:white">Add new</a>
-			<a href="{{ route('estate.edit',$es->id)}}" class="right-btn" style="float: right; margin-right:5px;border-radius: 3px; padding:10px; background-color:#30caa0; color:white">Delete All</a>
 		</div>
 	</div>
-	
+
 	<!-- Page -->
-
-	<section class="page-section">
-		
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-12 single-list-page">
-						@php
-							$imagePaths = explode(',', $es->images); // Split the string into an array
-						@endphp
 	
-						{{-- Slider Container --}}
-						<div class="owl-carousel owl-theme" id="estate-slider-{{ $loop->index }}">
-							@foreach ($imagePaths as $imagePath)
-								<div class="item">
-									<img src="{{ asset(trim($imagePath)) }}" alt="Estate Image">
-								</div>
-							@endforeach
-						</div>
-					</div>
-					<div class="col-lg-12 single-list-content">
-						<div class="row">
-							<div class="col-xl-8 sl-title">
-								<p><i class="fa fa-map-marker"></i>{{ $es->Address }}</p>
-							</div>
-							<div class="col-xl-4">
-								<a href="#" class="price-btn">{{ $es->price }}
-									<i class="fa fa-usd"></i>
-								</a>
-							</div>
-						</div>
-						<h3 class="sl-sp-title">Property Details</h3>
-						<div class="row property-details-list">
-							<div class="col-md-4 col-sm-6">
-								<p><i class="fa fa-home"></i> {{ $es->direction }}</p>
-								<p><i class="fa fa-bed"></i> {{ $es->room_number }} room</p>
-								<p><i class="fa fa-user"></i> {{ $es->Contact_phone }}</p>
-							</div>
-							<div class="col-md-4 col-sm-6">
-								<p><i class="fa fa-bars"></i> {{ $es->floor }} floor</p>
-								<p><i class="fa fa-building-o"></i>  {{ $es->outlook }}</p>
-								<p><i class="fa fa-clock-o"></i>  {{ $es->created_at->day}}/{{$es->created_at->month}}/{{  $es->created_at->year}} </p>
-							</div>
-							<div class="col-md-4">
-								<p><i class="fa fa-bath"></i>   {{ $es->bath_number }} bathroom</p>
-								<p><i class="fa fa-trophy"></i>  {{ $es->ownership }}</p>
-							
-							</div>
-						</div>
-						<h3 class="sl-sp-title">Description</h3>
-						<div class="description">
-							<p> {{ $es->description }}</p>
-							</div>
-						<h3 class="sl-sp-title">facilities</h3>
-						<div class="row property-details-list">
-							<div class="col-md-4 col-sm-6">
-									
-								@if($es->parking ==1)
-								 <p><i class="fa fa-check-circle-o"></i> parking </p> 
-								 @endif
-								 @if($es->place_for_barbecue ==1)
-								 <p><i class="fa fa-check-circle-o"></i> place_for_barbecue</p> 
-								 @endif
-								 @if($es->left ==1)
-								 <p><i class="fa fa-check-circle-o"></i> left </p> 
-								 @endif
-								 @if($es->TV_cable ==1)
-								 <p><i class="fa fa-check-circle-o"></i> TV_cable </p> 
-								 @endif
-								 @if($es->internet ==1)
-								 <p><i class="fa fa-check-circle-o"></i> internet </p> 
-								 @endif
-								 @if($es->central_heating ==1)
-								 <p><i class="fa fa-check-circle-o"></i> central_heating </p> 
-								 @endif
-
-								
-							</div>
-							{{-- <div class="col-md-4">
-								<p><i class="fa fa-check-circle-o"></i> City views</p>
-								<p><i class="fa fa-check-circle-o"></i> Internet</p>
-								<p><i class="fa fa-check-circle-o"></i> Electric Range</p>
-							</div> --}}
-						</div>
-						
-				
-						<!-- sidebar -->
-					</div>
-				</div>
-			</div>
-		</div>
 	
-	<br><br>
-		@endforeach
-	</section>
 	<!-- Page end -->
 
 
-	{{-- <!-- Clients section -->
+	<!-- Clients section -->
 	<div class="clients-section">
 		<div class="container">
 			<div class="clients-slider owl-carousel">
@@ -223,7 +288,7 @@
 			</div>
 		</div>
 	</div>
-	<!-- Clients section end --> --}}
+	<!-- Clients section end -->
 
 
 	<!-- Footer section -->
@@ -310,40 +375,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 	<script src="{{asset('js/magnific-popup.min.js')}}"></script>
 	<script src="{{asset('js/main.js')}}"></script>
 
-{{-- <script>	$(document).ready(function() {
-		$('.owl-carousel').each(function() {
-			$(this).owlCarousel({
-				loop: true,
-				margin: 10,
-				responsive: {
-					0: { items: 1 },
-					600: { items: 2 },
-					1000: { items: 3 }
-				}
-			});
-		});
-	});
-</script> --}}
-<script>
-	$(document).ready(function(){
-	  $(".owl-carousel").owlCarousel({
-		loop: true,
-		margin: 10,
-		nav: true,
-		responsive: {
-		  0: {
-			items: 1
-		  },
-		  600: {
-			items: 3
-		  },
-		  1000: {
-			items: 3
-		  }
-		}
-	  });
-	});
-  </script>
+
 	<!-- load for map -->
 	<script src="{{asset('https://maps.googleapis.com/maps/api/js?key=AIzaSyB0YyDTa0qqOjIerob2VTIwo_XVMhrruxo')}}"></script>
 	<script src="{{asset('js/map-2.js')}}"></script>

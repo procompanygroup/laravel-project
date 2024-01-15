@@ -85,9 +85,9 @@
 
 
 	<!-- Page top section -->
-	<section class="page-top-section set-bg" data-setbg="img/page-top-bg.jpg">
+	<section class="page-top-section set-bg" data-setbg="{{asset('img/page-top-bg.jpg')}}">
 		<div class="container text-white">
-			<h2>Home</h2>
+			<h2>Enter the specifications of your apartment for sale</h2>
 		</div>
 	</section>
 
@@ -112,145 +112,7 @@
 		</button>
 	</div>
 	@endif
-	
-					<!-- row -->
-					<div class="row">
-	
-						<div class="col-lg-12 col-md-12">
-							<div class="card">
-								<div class="card-body">
-				
-									<form action={{ url('estate/create') }} method="post" enctype="multipart/form-data" autocomplete="off">
-										@csrf
-				
-										<div class="row">
-											<div class="col">
-												<label for="inputName" class="control-label">outlook</label>
-												<input type="text" class="form-control" id="inputName" name="outlook"
-													title="please enter your paretment's outlook" required>
-											</div>
-										</div><br>
-				
-										<div class="row">
-											<div class="col">
-												<label for="inputName" class="control-label">direction</label>
-												<input type="text" class="form-control" id="inputName" name="direction" required>
-											</div>
-										</div><br>
-	
-										
-										<div class="row">
-											<div class="col">
-												<label for="inputName" class="control-label">floor</label>
-												<input type="text" class="form-control" id="inputName" name="floor" required>
-											</div>
-										</div><br>
-	
-										
-										<div class="row">
-											<div class="col">
-												<label for="inputName" class="control-label">ownership</label>
-												<input type="text" class="form-control" id="inputName" name="ownership" required>
-											</div>
-										</div><br>
-	
-										
-										<div class="row">
-											<div class="col">
-												<label for="inputName" class="control-label">room number</label>
-												<input type="text" class="form-control" id="inputName" name="room_number" required>
-											</div>
-										</div><br>
-	
-										<div class="row">
-											<div class="col">
-												<label for="inputName" class="control-label">bath number</label>
-												<input type="text" class="form-control" id="inputName" name="bath_number" required>
-											</div>
-										</div><br>
-	
-										<div class="row">
-											<div class="col">
-												<label for="inputName" class="control-label">price</label>
-												<input type="text" class="form-control" id="inputName" name="price" required>
-											</div>
-										</div><br>
-	
-										<div class="form-check">
-											<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-											<label class="form-check-label" for="parking">
-												parking
-											</label>
-										  </div>
-	
-										  <div class="form-check">
-											<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-											<label class="form-check-label" for="place_for_barbecue">
-												place for barbecue
-											</label>
-										  </div>
-	
-										  <div class="form-check">
-											<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-											<label class="form-check-label" for="left">
-												left
-											</label>
-										  </div>
-	
-										  <div class="form-check">
-											<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-											<label class="form-check-label" for="TV_cable">
-												TV_cable
-											</label>
-										  </div>
-	
-										  <div class="form-check">
-											<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-											<label class="form-check-label" for="internet">
-												internet
-											</label>
-										  </div>
-										 
-										  
-										  <div class="form-check">
-											<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-											<label class="form-check-label" for=" central_heating">
-												central_heating
-											</label>
-										  </div>
-	
-										
-										<div class="row">
-											<div class="col">
-												<label for="inputName" class="control-label">slug</label>
-												<input type="text" class="form-control" id="inputName" name="slug" required>
-											</div>
-										</div><br>
-	
-										{{-- <div class="form-group">
-											<label>التصنيف الأب</label>
-											<select name="parent_id" class="form-control select">
-												
-												<option value="0">لا يوجد</option>
-	
-												@foreach($parents as $parent)
-												<option value="{{$parent->id}}">{{$parent->category_name}}</option>
-												@endforeach 
-	
-											</select>
-										</div> --}}
-				
-				
-										<div class="d-flex justify-content-center">
-											<button type="submit" class="btn btn-primary">Add</button>
-										</div>
-				
-									</form>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- row closed -->
+	 
 	@endsection
 	<!-- Breadcrumb -->
 	<div class="site-breadcrumb">
@@ -261,34 +123,212 @@
 	</div>
 
 	<!-- Page -->
+	@foreach ($errors->all() as $error)
+	<li>{{ $error }}</li>
+      @endforeach
 	
+	<form action={{ Route('estate.store')}} method="POST" enctype="multipart/form-data" autocomplete="off">
+		@csrf
+		@method('POST')
+		<div class="row">
+
+			<div class="col-lg-6 col-md-6">
+				<div class="card">
+					<div class="card-body">
+         	<div class="row">
+			<div class="col">
+				<label for="inputName" class="control-label">Contact phone</label>
+				<input type="text" class="form-control" id="inputName" name="Contact_phone"
+					placeholder="Please enter your contact number" required>
+			</div>
+		</div><br>
+
+		<div class="row">
+			<div class="col">
+				<label for="inputName" class="control-label">Address</label>
+				<input type="text" class="form-control" id="inputName" name="Address" 
+				placeholder="Address"required>
+			</div>
+		</div><br>
+
+		<div class="row">
+			<div class="col">
+				<label for="inputName" class="control-label">outlook</label>
+				<input type="text" class="form-control" id="inputName" name="outlook"
+					placeholder="school,public road ,mosque or inner" required>
+			</div>
+		</div><br>
+
+		<div class="row">
+			<div class="col">
+				<label for="inputName" class="control-label">direction</label>
+				<input type="text" class="form-control" id="inputName" name="direction" 
+				placeholder="nourth,south,east or west"required>
+			</div>
+		</div><br>
+
+		
+		<div class="row">
+			<div class="col">
+				<label for="inputName" class="control-label">floor</label>
+				<input type="text" class="form-control" id="inputName" name="floor"
+				placeholder="1,2,3,4,5 ..." required>
+			</div>
+		</div><br>
+
+		
+		<div class="row">
+			<div class="col">
+				<label for="inputName" class="control-label">ownership</label>
+				<input type="text" class="form-control" id="inputName" name="ownership" 
+				placeholder="Taboo ,Court ruling"required>
+			</div>
+		</div><br>
+
+		
+		<div class="row">
+			<div class="col">
+				<label for="inputName" class="control-label">room number</label>
+				<input type="text" class="form-control" id="inputName" name="room_number"
+				placeholder="room number" required>
+			</div>
+		</div><br>
+
+		<div class="row">
+			<div class="col">
+				<label for="inputName" class="control-label">bath number</label>
+				<input type="text" class="form-control" id="inputName" name="bath_number"
+				placeholder="bath number" required>
+			</div>
+		</div><br>
+
+		<div class="row">
+			<div class="col">
+				<label for="inputName" class="control-label">price</label>
+				<input type="text" class="form-control" id="inputName" name="price" 
+				placeholder="price in $" required >
+				
+			</div>
+		</div><br>
+
+		<div class="row">
+			<div class="col">
+			  <label for="exampleTextarea">description</label>
+			  <textarea class="form-control" id="exampleTextarea" name="description" rows="3" placeholder="description"></textarea>
+			</div>
+		  </div><br>
+
+            <h3>facilities</h3>
+		<div class="form-check">
+			<input class="form-check-input" type="checkbox" name="parking" value="1" id="flexCheckChecked1" checked="checked" >
+			<label class="form-check-label" for="parking">
+				parking
+			</label>
+		  </div>
+
+		  <div class="form-check">
+			<input class="form-check-input" type="checkbox" value="1" name="place_for_barbecue" id="flexCheckChecked2" checked="checked">
+			<label class="form-check-label" for="place_for_barbecue">
+				place for barbecue
+			</label>
+		  </div>
+
+		  <div class="form-check">
+			<input class="form-check-input" type="checkbox" name="left" value="1" id="flexCheckChecked3" checked="checked">
+			<label class="form-check-label" for="left">
+				left
+			</label>
+		  </div>
+
+		  <div class="form-check">
+			<input class="form-check-input" type="checkbox" name="TV_cable" value="1" id="flexCheckChecked4" checked="checked">
+			<label class="form-check-label" for="TV_cable">
+				TV cable
+			</label>
+		  </div>
+
+		  <div class="form-check">
+			<input class="form-check-input" type="checkbox" name="internet" value="1" id="flexCheckChecked5" checked="checked">
+			<label class="form-check-label" for="internet">
+				internet
+			</label>
+		  </div>
+		 
+		  
+		  <div class="form-check">
+			<input class="form-check-input" type="checkbox" name="central_heating" value="1" id="flexCheckChecked6"checked="checked">
+			<label class="form-check-label" for=" central_heating">
+				central heating
+			</label>
+		  </div>
+
+		
+		<div class="row">
+			<div class="col">
+				<label for="inputName" class="control-label">slug</label>
+				<input type="text" class="form-control" id="inputName" name="slug" required>
+			</div>
+		</div><br>
+		<div class="row">
+				<label for="images" class= "form-label">Images </label>
+		<input class="form-control" type="file"  multiple accept="images/*" name="images[]" id="images">
+	<div aria-describedby="imagesHelp" class="form-text">Select Multiple Images for your house.</div>
+	<div class="gallery" id="gallery">
+			</div>
+		</div>
+				</div>
+			<div class="d-flex justify-content-center">
+				<button type="submit" class="btn" style="padding-left: 50px; padding-right: 50px; background-color:#30caa0; color:white" >Add</button>
+			</div>
+			<br>
+		</div>
+			</div>
+			<br>
+		<div class="col-lg-5 single-list-page">
+			<div class="related-properties">
+				<div class="rp-item">
+					<div class="rp-pic set-bg" data-setbg="{{asset('img/feature/1.jpg')}}">
+						<div class="sale-notic">FOR SALE</div>
+					</div>
+				</div>
+				<br>
+				<div class="rp-item">
+					<div class="rp-pic set-bg" data-setbg="{{asset('img/feature/2.jpg')}}">
+						<div class="rent-notic">FOR SALE</div>
+					</div>
+				</div>
+                <br>
+				<div class="rp-item">
+					<div class="rp-pic set-bg" data-setbg="{{asset('img/feature/3.jpg')}}">
+						<div class="sale-notic">FOR SALE</div>
+					</div>
+                 <br>
+				<div class="rp-item">
+					<div class="rp-pic set-bg" data-setbg="{{asset('img/feature/4.jpg')}}">
+						<div class="sale-notic">FOR SALE</div>
+					</div>
+				</div>
+				<br>
+				<div class="rp-item">
+					<div class="rp-pic set-bg" data-setbg="{{asset('img/feature/5.jpg')}}">
+						<div class="rent-notic">FOR SALE</div>
+					</div>
+				</div>
+				<br><br>
+			</div>
+		
+		
+		
+		</div>
 	
+		</div>
+		
+	</form>
+
 	<!-- Page end -->
 
 
-	<!-- Clients section -->
-	<div class="clients-section">
-		<div class="container">
-			<div class="clients-slider owl-carousel">
-				<a href="#">
-					<img src="{{asset('img/partner/1.png')}}" alt="">
-				</a>
-				<a href="#">
-					<img src="{{asset('img/partner/2.png')}}" alt="">
-				</a>
-				<a href="#">
-					<img src="{{asset('img/partner/3.png')}}" alt="">
-				</a>
-				<a href="#">
-					<img src="{{asset('img/partner/4.png')}}" alt="">
-				</a>
-				<a href="#">
-					<img src="{{asset('img/partner/5.png')}}" alt="">
-				</a>
-			</div>
-		</div>
-	</div>
-	<!-- Clients section end -->
+	
 
 
 	<!-- Footer section -->
