@@ -37,7 +37,7 @@ Route::get('estate/create', [ EstateController::class, 'create' ])->name('estate
 Route::post('estate/store', [ EstateController::class, 'store' ])->name('estate.store');
 Route::get('estate/edit/{id}', [ EstateController::class, 'edit' ])->name('estate.edit');
 Route::post('estate/update{id}', [ EstateController::class, 'update' ])->name('estate.update');
-Route::get('estate/delete', [ EstateController::class, 'delete' ])->name('estate.delete');
+Route::get('estate/delete', [ EstateController::class, 'destroy' ])->name('estate.delete');
 Route::get('estate/deleteAll', [ EstateController::class, 'deleteAll' ])->name('estate.deleteAll');
 //Route::resource('estate', EstateController::class);
 //For Image
