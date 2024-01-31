@@ -58,7 +58,7 @@
 							<a href=""><i class="fa fa-linkedin"></i></a>
 						</div>
 						<div class="user-panel">
-							<a href=""><i class="fa fa-user-circle-o"></i> Register</a>
+							<a href=""><i class="fa fa-user-circle-o"></i> Register111</a>
 							<a href=""><i class="fa fa-sign-in"></i> Login</a>
 						</div>
 					</div>
@@ -95,16 +95,16 @@
 	<div class="site-breadcrumb">
 		<div class="container">
 			<a href=""><i class="fa fa-home"></i>Home</a>
-			<span><i class="fa fa-angle-right"></i>FOR SALE</span>
+			<span><i class="fa fa-angle-right"></i>FOR SALE ww</span>
 			<span></span>
-			
+{{-- 			
 		    <a href="{{route('estate.create')}}" class="right-btn" style="float: right;  border-radius: 3px; padding:10px; background-color:#30caa0; color:white">Add new</a>
 			
 			<form action="{{ route('estate.deleteAll') }}" method="POST">
 				@method('DELETE')
 			     @csrf
 			<button type="submit" class="right-btn" style="float: right; margin-right:5px;border-radius: 3px; padding:10px; background-color:#30caa0; color:white"> d estate</button>
-			</form>
+			</form> --}}
 		</div>
 	</div>
 	
