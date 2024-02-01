@@ -125,7 +125,7 @@
 							<div class="card">
 								<div class="card-body">
 									
-									<form  action="{{ route('estate.update', $es->id) }}" method="POST" enctype="multipart/form-data" autocomplete="off">
+									<form  action="{{ route('customerEstate.update', $es->id) }}" method="POST" enctype="multipart/form-data" autocomplete="off">
 										@csrf
 		
 										<div class="row">

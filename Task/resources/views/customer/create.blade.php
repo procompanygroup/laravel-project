@@ -126,7 +126,7 @@
 	<li>{{ $error }}</li>
       @endforeach
 	
-	<form action={{ Route('estate.store')}} method="POST" enctype="multipart/form-data" autocomplete="off">
+	<form action={{ Route('customerEstate.store')}} method="POST" enctype="multipart/form-data" autocomplete="off">
 		@csrf
 		@method('POST')
 		<div class="row">

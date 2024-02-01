@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('estates', function (Blueprint $table) {
             $table->id();
-           
             $table->string('Address')->nullable();
             $table->string('Contact_phone')->nullable();
             $table->string('outlook')->nullable();
@@ -24,16 +23,19 @@ return new class extends Migration
             $table->integer('room_number')->nullable();
             $table->integer('bath_number')->nullable();
             $table->double('price')->nullable();
-            $table->boolean('parking')->default(0)->nullable;
-            $table->boolean('place_for_barbecue')->default(0)->nullable;
-            $table->boolean('left')->default(0)->nullable;
-            $table->boolean('TV_cable')->default(0)->nullable;
-            $table->boolean('internet')->default(0)->nullable;
-            $table->boolean('central_heating')->default(0)->nullable;
-            $table->string('images')->nullable();
-            $table->string('slug')->default(0)->nullable;
+            $table->boolean('parking')->default(0)->nullable ();
+            $table->boolean('place_for_barbecue')->default(0)->nullable();
+            $table->boolean('left')->default(0)->nullable();
+            $table->boolean('TV_cable')->default(0)->nullable();
+            $table->boolean('internet')->default(0)->nullable();
+            $table->boolean('central_heating')->default(0)->nullable();
+            $table->string('slug')->nullable();
+            //user
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
+
     }
 
     /**
